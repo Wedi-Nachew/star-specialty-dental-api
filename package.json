@@ -1,0 +1,25 @@
+{
+    "name": "star-dental-api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon index.js --watch",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs",
+    "dependencies": {
+        "@supabase/supabase-js": "^2.98.0",
+        "cors": "^2.8.6",
+        "dotenv": "^17.3.1",
+        "express": "^5.2.1",
+        "nodemon": "^3.1.14",
+        "resend": "^6.9.3",
+        "telegraf": "^4.16.3",
+        "zod": "^4.3.6"
+    }
+}
