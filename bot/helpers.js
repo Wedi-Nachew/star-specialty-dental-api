@@ -20,9 +20,9 @@ const formatDate = (dateStr) => {
     if (!dateStr) return "Flexible";
 
     return new Date(dateStr).toLocaleDateString("en-GB", {
+        weekday: "short",
         month: "short",
-        day: "short",
-        year: "numeric",
+        day: "numeric",
     });
 };
 
@@ -47,7 +47,7 @@ const nowTime = () => {
 
 const shortId = (id) => id.substring(0, 8);
 
-const statusIcons = (status) => {
+const statusIcon = (status) => {
     const icons = {
         pending: "⏳",
         confirmed: "✅",
@@ -66,5 +66,5 @@ module.exports = {
     dateOffsetStr,
     nowTime,
     shortId,
-    statusIcons,
+    statusIcon,
 };

@@ -37,11 +37,9 @@ const getBookingById = async (id) => {
 
 // Short ID lookup
 const getBookingByShortId = async (shortId) => {
-    const { data, error } = await supabase
-        .from("bookings")
-        .select("*")
-        .like("id", `${shortId}%`)
-        .single();
+    const { data, error } = await supabase.rpc("get_booking_by_short_id", {
+        prefix: shortId,
+    });
 
     if (error) throw error;
     return data;
