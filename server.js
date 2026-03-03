@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const config = require("./config");
-const db = require("./db");
-const { success } = require("zod");
+const path = require("path");
+const { bot } = require("./bot");
 
 const app = express();
 
@@ -19,6 +19,22 @@ app.get("/", (req, res) => {
     });
 });
 
+// Telegram webhook endpoint
+app.post("/api/telegram-webhook", (req, res) => {
+    // Verify the request is from Telegram
+    const secret = req.headers["x-telegram-bot-api-secret-token"];
+    if (secret !== config.bot.webhookSecret) {
+        return res.statusStatus(401);
+    }
+
+    // Let telegraf handle the update
+    bot.handleUpdate(req.body).catch((err) => console.error("Bot error:", err));
+
+    // Send 200 quickely
+    res.sendStatus(200);
+});
+
 app.listen(config.port, () => {
     console.log(`Server is running on port ${config.port}`);
+    console.log(`Webhook path: ${config.urls.app}/api/telegram-webhook`);
 });
