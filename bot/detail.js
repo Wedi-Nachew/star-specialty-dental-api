@@ -61,7 +61,7 @@ const buildDetailKeyboard = (booking, source, page) => {
         Markup.button.url("📧 Message TG", `tg://resolve?phone=${cleanPhone}`),
         Markup.button.url(
             "📞 Call",
-            `https://sundentalclinicmk.netlify.app/call/${cleanPhone}`,
+            `https://sundentalclinicmk.netlify.app/${cleanPhone}`,
         ),
     ]);
 

@@ -1,7 +1,6 @@
 const { Markup } = require("telegraf");
 const config = require("../config");
 const { esc, formatDate, nowTime, shortId } = require("./helpers");
-const { parse } = require("dotenv");
 
 // New booking notification
 // This sends a notification not an edit

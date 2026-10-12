@@ -3,6 +3,7 @@ const cors = require("cors");
 const config = require("./config");
 const path = require("path");
 const { bot } = require("./bot");
+const { success } = require("zod");
 
 const app = express();
 
@@ -17,6 +18,25 @@ app.get("/", (req, res) => {
         service: "Star Dental API",
         time: new Date().toISOString(),
     });
+});
+
+app.get("/test-email", async (req, res) => {
+    const { sendBookingEmail } = require("./email");
+    try {
+        await sendBookingEmail({
+            to: config.email.clinicEmail,
+            patientName: "Test Patient",
+            service: "Dental Cleaning",
+            date: "2025-04-15",
+            time: "10:00 AM",
+        });
+        res.json({
+            success: true,
+            message: `Test email sent to ${config.email.clinicEmail} successfully`,
+        });
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
 });
 
 // Telegram webhook endpoint
